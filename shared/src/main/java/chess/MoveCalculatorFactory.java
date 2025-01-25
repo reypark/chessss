@@ -17,8 +17,8 @@ public class MoveCalculatorFactory {
         calculatorMap.put(ChessPiece.PieceType.BISHOP, new BishopMoveCalculator());
         calculatorMap.put(ChessPiece.PieceType.KNIGHT, new KnightMoveCalculator());
         calculatorMap.put(ChessPiece.PieceType.PAWN, new PawnMoveCalculator());
-//        calculatorMap.put(ChessPiece.PieceType.QUEEN, new QueenMoveCalculator());
-//        calculatorMap.put(ChessPiece.PieceType.ROOK, new RookMoveCalculator());
+        calculatorMap.put(ChessPiece.PieceType.QUEEN, new QueenMoveCalculator());
+        calculatorMap.put(ChessPiece.PieceType.ROOK, new RookMoveCalculator());
 
     }
 

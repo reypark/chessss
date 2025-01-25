@@ -13,8 +13,8 @@ public class PawnMoveCalculator extends PieceMoveCalculator {
         ChessPiece pawn = board.getPiece(myPosition);
         ChessGame.TeamColor teamColor = pawn.getTeamColor();
 
-        int direction = (teamColor == ChessGame.TeamColor.WHITE) ? 1 : -1; // White moves up, black moves down
-        int startRow = (teamColor == ChessGame.TeamColor.WHITE) ? 2 : 7; // Starting row for pawns
+        int direction = (teamColor == ChessGame.TeamColor.WHITE) ? 1 : -1;
+        int startRow = (teamColor == ChessGame.TeamColor.WHITE) ? 2 : 7;
 
         ChessPosition oneForward = new ChessPosition(myPosition.getRow() + direction, myPosition.getColumn());
         if (board.isValidPosition(oneForward) && !board.isOccupied(oneForward)) {
@@ -43,7 +43,7 @@ public class PawnMoveCalculator extends PieceMoveCalculator {
     }
 
     private void addMoveIfPromotion(Collection<ChessMove> moves, ChessPosition start, ChessPosition end, ChessGame.TeamColor teamColor) {
-        int promotionRow = (teamColor == ChessGame.TeamColor.WHITE) ? 8 : 1; // Promotion rows
+        int promotionRow = (teamColor == ChessGame.TeamColor.WHITE) ? 8 : 1;
         if (end.getRow() == promotionRow) {
             moves.add(new ChessMove(start, end, ChessPiece.PieceType.QUEEN));
             moves.add(new ChessMove(start, end, ChessPiece.PieceType.ROOK));
