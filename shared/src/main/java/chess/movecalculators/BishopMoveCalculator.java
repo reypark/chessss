@@ -1,4 +1,47 @@
 package chess.movecalculators;
 
-public class BishopMoveCalculator {
+import chess.*;
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class BishopMoveCalculator extends PieceMoveCalculator {
+    @Override
+    public Collection<ChessMove> calculateMoves(ChessBoard board, ChessPosition myPosition) {
+        Collection<ChessMove> moves = new ArrayList<>();
+
+        int[][] directions = {
+                {1, -1},   // Down-left
+                {1, 1},    // Down-right
+                {-1, -1},  // Up-left
+                {-1, 1}    // Up-right
+        };
+
+        for (int[] direction : directions) {
+            int row = myPosition.getRow();
+            int col = myPosition.getColumn();
+
+            while (true) {
+                row += direction[0];
+                col += direction[1];
+
+                ChessPosition newPosition = new ChessPosition(row, col);
+
+                if (!board.isValidPosition(newPosition)) {
+                    break;
+                }
+
+                if (board.isOccupied(newPosition)) {
+                    ChessPiece targetPiece = board.getPiece(newPosition);
+                    if (targetPiece.getTeamColor() != board.getPiece(myPosition).getTeamColor()) {
+                        moves.add(new ChessMove(myPosition, newPosition, null));
+                    }
+                    break;
+                }
+
+                moves.add(new ChessMove(myPosition, newPosition, null));
+            }
+        }
+
+        return moves;
+    }
 }
