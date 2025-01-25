@@ -31,4 +31,14 @@ public class ChessPosition {
     public int getColumn() {
         return col;
     }
+
+    public String toChessNotation() {
+        char columnLetter = (char) ('A' + (col - 1));
+        return columnLetter + String.valueOf(row);
+    }
+
+    @Override
+    public String toString() {
+        return toChessNotation();
+    }
 }
